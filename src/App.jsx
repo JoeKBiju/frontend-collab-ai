@@ -12,7 +12,7 @@ import Settings from './pages/Settings';
 
 function App() {
     return (
-        <>
+
             <BrowserRouter>
                 <NavBar />
                 <Routes>
@@ -25,7 +25,7 @@ function App() {
                     <Route path='/settings' element={<Settings />} />
                 </Routes>
             </BrowserRouter>
-        </>
+
     )
 }
 
