@@ -18,7 +18,7 @@ function Home() {
     useEffect(() => {
         //Gets list of rooms
         const fetchData = async () => {
-            const response = await fetch('http://64.226.76.70:8000/api/chat/rooms')
+            const response = await fetch('http://64.226.76.70/api/chat/rooms')
                 .then(response => response.json());
             
 
@@ -32,7 +32,7 @@ function Home() {
 
         // Gets user form cookie
         const getUser = async () => {
-            const response = await fetch('http://64.226.76.70:8000/api/auth/user-details', {
+            const response = await fetch('http://64.226.76.70/api/auth/user-details', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

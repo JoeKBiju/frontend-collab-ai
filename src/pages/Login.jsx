@@ -15,7 +15,7 @@ function Login() {
     const submit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('http://64.226.76.70:8000/api/auth/login', {
+        const response = await fetch('http://64.226.76.70/api/auth/login', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {'Content-Type': 'application/json'},
