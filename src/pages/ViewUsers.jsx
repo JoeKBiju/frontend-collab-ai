@@ -23,7 +23,7 @@ function ViewUsers() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://64.226.76.70:8000/api/chat/room-users', {
+            const response = await fetch('http://64.226.76.70/api/chat/room-users', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -51,7 +51,7 @@ function ViewUsers() {
 
     const handleAddUserClick = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://64.226.76.70:8000/api/chat/add-users', {
+        const response = await fetch('http://64.226.76.70/api/chat/add-users', {
             method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

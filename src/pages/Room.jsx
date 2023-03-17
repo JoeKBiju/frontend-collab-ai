@@ -30,7 +30,7 @@ function Room() {
 
     
     //Starts websocket
-    const { sendJsonMessage, lastJsonMessage } = useWebSocket('ws://64.226.76.70:8000/ws/' + room + '/', {
+    const { sendJsonMessage, lastJsonMessage } = useWebSocket('ws://64.226.76.70/ws/' + room + '/', {
         onOpen: () => console.log('Websocket Connection Established'),
         onClose: () => console.log('Websocket Connection Terminated'),
     });
@@ -55,7 +55,7 @@ function Room() {
     useEffect(() => {
         // Gets stored messages
         const fetchData = async () => {
-            const response = await fetch('http://64.226.76.70:8000/api/chat/get-messages', {
+            const response = await fetch('http://64.226.76.70/api/chat/get-messages', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -87,7 +87,7 @@ function Room() {
         e.preventDefault();
         handleClick();
         
-        await fetch('http://64.226.76.70:8000/api/sentiment/', {
+        await fetch('http://64.226.76.70/api/sentiment/', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

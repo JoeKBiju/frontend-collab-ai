@@ -15,7 +15,7 @@ function NavBar() {
     useEffect(() => {
         // Gets user form cookie
         const getUser = async () => {
-            const response = await fetch('http://64.226.76.70:8000/api/auth/user-details', {
+            const response = await fetch('http://64.226.76.70/api/auth/user-details', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -37,7 +37,7 @@ function NavBar() {
     //Log out user
     const handleLogoutClick = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://64.226.76.70:8000/api/auth/logout', {
+        const response = await fetch('http://64.226.76.70/api/auth/logout', {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}            

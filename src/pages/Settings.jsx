@@ -42,7 +42,7 @@ function Settings() {
     const handleSubmitNameClick = async (e) => {
         e.preventDefault();
 
-        await fetch('http://64.226.76.70:8000/api/auth/change-name', {
+        await fetch('http://64.226.76.70/api/auth/change-name', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -58,7 +58,7 @@ function Settings() {
     const handleSubmitEmailClick = async (e) => {
         e.preventDefault();
 
-        await fetch('http://64.226.76.70:8000/api/auth/change-email', {
+        await fetch('http://64.226.76.70/api/auth/change-email', {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -75,7 +75,7 @@ function Settings() {
         e.preventDefault();
 
         if (password === confirmPassword) {
-            await fetch('http://64.226.76.70:8000/api/auth/change-email', {
+            await fetch('http://64.226.76.70/api/auth/change-email', {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

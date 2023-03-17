@@ -21,7 +21,7 @@ function Register() {
 
         //Checks both passwords match
         if (password === rePassword) {
-            await fetch('http://64.226.76.70:8000/api/auth/register', {
+            await fetch('http://64.226.76.70/api/auth/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

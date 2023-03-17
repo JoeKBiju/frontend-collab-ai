@@ -15,7 +15,7 @@ function CreateRoom() {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        await fetch('http://64.226.76.70:8000/api/chat/create-room', {
+        await fetch('http://64.226.76.70/api/chat/create-room', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
