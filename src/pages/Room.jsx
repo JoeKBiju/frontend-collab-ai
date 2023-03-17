@@ -30,7 +30,7 @@ function Room() {
 
     
     //Starts websocket
-    const { sendJsonMessage, lastJsonMessage } = useWebSocket('ws://64.226.76.70/ws/' + room + '/', {
+    const { sendJsonMessage, lastJsonMessage } = useWebSocket('ws://64.226.76.70:8001/ws/' + room + '/', {
         onOpen: () => console.log('Websocket Connection Established'),
         onClose: () => console.log('Websocket Connection Terminated'),
     });
