@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 
 function Register() {
     const [name, setName] = useState('');
@@ -11,6 +12,7 @@ function Register() {
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
     const [showModal, setShowModal] = useState(false);
+    const [redirect, setRedirect] = useState(true);
 
     const handleClose = () => setShowModal(false);
     const navigate = useNavigate();
@@ -21,7 +23,7 @@ function Register() {
 
         //Checks both passwords match
         if (password === rePassword) {
-            await fetch('http://64.226.76.70/api/auth/register', {
+            const response = await fetch('http://64.226.76.70/api/auth/register', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -29,9 +31,18 @@ function Register() {
                     email,
                     password,
                 })
-            });
+            })
+            .then(response => {
+                if(response.status !== 200) {
+                    setRedirect(false);
+                    console.log("Error: Email already exists");
+                    console.log(response);
+                }
+            })
 
-            navigate('/');
+            if(!redirect){
+                navigate('/');
+            }
 
         } else {
             setShowModal(true);
@@ -70,6 +81,12 @@ function Register() {
                 </Container>
                 </div>
             </Container>
+            <br></br>
+            {redirect ? <></> : 
+                <Alert key="error" variant="danger">
+                    Email Already Exists
+                </Alert>
+            }
 
             <Modal
                 show={showModal}

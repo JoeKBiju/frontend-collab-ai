@@ -4,11 +4,13 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import Alert from 'react-bootstrap/Alert';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [cookies, setCookie] = useCookies(['token']);
+    const [redirect, setRedirect] = useState(true);
 
     const navigate = useNavigate();
 
@@ -24,11 +26,20 @@ function Login() {
                     password,
                 })
             })
-            .then(response => response.json());
-        
-        setCookie("token", response.token, { path: '/' });
-        navigate('/home');
-        window.location.reload(false);
+            .then((response) => {
+                if(!response.ok) {
+                    setRedirect(false);
+                    console.log("Error: Invalid Email or Password");
+                } else {
+                    return response.json();
+                }
+            })
+
+        if(redirect) {
+            setCookie("token", response.token, { path: '/' });
+            navigate('/home');
+            window.location.reload(false);
+        }
 
         
     };
@@ -54,6 +65,12 @@ function Login() {
                     </Form>
                 </Container>
             </div>
+            <br></br>
+            {redirect ? <></> : 
+                <Alert key="error" variant="danger">
+                    Incorrect Login Details
+                </Alert>
+            }
         </Container>
     );
 }
