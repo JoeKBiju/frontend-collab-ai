@@ -33,14 +33,14 @@ function Register() {
                 })
             })
             .then(response => {
-                if(response.status !== 200) {
+                if(!response.ok) {
                     setRedirect(false);
                     console.log("Error: Email already exists");
                     console.log(response);
                 }
             })
 
-            if(!redirect){
+            if(redirect){
                 navigate('/');
             }
 
