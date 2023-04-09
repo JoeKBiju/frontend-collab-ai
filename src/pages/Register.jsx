@@ -40,12 +40,12 @@ function Register() {
                 }
             })
 
-            if(redirect){
-                navigate('/');
-            }
-
         } else {
             setShowModal(true);
+        }
+
+        if(redirect){
+            navigate('/');
         }
     };
 
